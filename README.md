@@ -1,6 +1,10 @@
 # go-event-ingestor
 
+[![ci](https://github.com/msalimcengiz/go-event-ingestor/actions/workflows/ci.yml/badge.svg)](https://github.com/msalimcengiz/go-event-ingestor/actions/workflows/ci.yml)
+
 A Go service for high-volume event tracking (page views, clicks, ad impressions). The HTTP API puts events into a **Redis Stream**. Workers then write them to **PostgreSQL** in batches with `COPY`. Under the same load this gives **2.8× the throughput** of writing each event directly and **~99.9% fewer Postgres commits** (see [Benchmark](#benchmark)).
+
+![`make demo` on a fresh machine: every step is checked and prints ✓ or stops with ✗](docs/demo.svg)
 
 ## Try it in 2 minutes
 

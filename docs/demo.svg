@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="818" viewBox="0 0 960 818" role="img" aria-label="go-event-ingestor · make demo">
+<title>go-event-ingestor · make demo</title>
+<style>text{font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#d6deeb;white-space:pre}.b{font-weight:700;fill:#ffffff}.d{fill:#8b949e}.g{fill:#3fb950}.r{fill:#f85149}.p{fill:#79c0ff}.l{opacity:0;animation-duration:16.07s;animation-iteration-count:infinite;animation-timing-function:step-end}@keyframes k0{0%{opacity:0}2.489%{opacity:1}99.5%{opacity:0}}@keyframes k1{0%{opacity:0}2.489%{opacity:1}99.5%{opacity:0}}@keyframes k2{0%{opacity:0}8.712%{opacity:1}99.5%{opacity:0}}@keyframes k3{0%{opacity:0}9.459%{opacity:1}99.5%{opacity:0}}@keyframes k4{0%{opacity:0}10.205%{opacity:1}99.5%{opacity:0}}@keyframes k5{0%{opacity:0}10.952%{opacity:1}99.5%{opacity:0}}@keyframes k6{0%{opacity:0}11.699%{opacity:1}99.5%{opacity:0}}@keyframes k7{0%{opacity:0}12.446%{opacity:1}99.5%{opacity:0}}@keyframes k8{0%{opacity:0}13.192%{opacity:1}99.5%{opacity:0}}@keyframes k9{0%{opacity:0}13.939%{opacity:1}99.5%{opacity:0}}@keyframes k10{0%{opacity:0}20.162%{opacity:1}99.5%{opacity:0}}@keyframes k11{0%{opacity:0}20.909%{opacity:1}99.5%{opacity:0}}@keyframes k12{0%{opacity:0}21.655%{opacity:1}99.5%{opacity:0}}@keyframes k13{0%{opacity:0}22.402%{opacity:1}99.5%{opacity:0}}@keyframes k14{0%{opacity:0}23.149%{opacity:1}99.5%{opacity:0}}@keyframes k15{0%{opacity:0}23.895%{opacity:1}99.5%{opacity:0}}@keyframes k16{0%{opacity:0}24.642%{opacity:1}99.5%{opacity:0}}@keyframes k17{0%{opacity:0}25.389%{opacity:1}99.5%{opacity:0}}@keyframes k18{0%{opacity:0}26.136%{opacity:1}99.5%{opacity:0}}@keyframes k19{0%{opacity:0}26.882%{opacity:1}99.5%{opacity:0}}@keyframes k20{0%{opacity:0}27.629%{opacity:1}99.5%{opacity:0}}@keyframes k21{0%{opacity:0}28.376%{opacity:1}99.5%{opacity:0}}@keyframes k22{0%{opacity:0}29.932%{opacity:1}99.5%{opacity:0}}@keyframes k23{0%{opacity:0}30.678%{opacity:1}99.5%{opacity:0}}@keyframes k24{0%{opacity:0}36.901%{opacity:1}99.5%{opacity:0}}@keyframes k25{0%{opacity:0}37.648%{opacity:1}99.5%{opacity:0}}@keyframes k26{0%{opacity:0}42.315%{opacity:1}99.5%{opacity:0}}@keyframes k27{0%{opacity:0}43.062%{opacity:1}99.5%{opacity:0}}@keyframes k28{0%{opacity:0}43.808%{opacity:1}99.5%{opacity:0}}@keyframes k29{0%{opacity:0}50.031%{opacity:1}99.5%{opacity:0}}@keyframes k30{0%{opacity:0}50.778%{opacity:1}99.5%{opacity:0}}@keyframes k31{0%{opacity:0}51.525%{opacity:1}99.5%{opacity:0}}@keyframes k32{0%{opacity:0}52.271%{opacity:1}99.5%{opacity:0}}@keyframes k33{0%{opacity:0}54.325%{opacity:1}99.5%{opacity:0}}@keyframes k34{0%{opacity:0}55.072%{opacity:1}99.5%{opacity:0}}@keyframes k35{0%{opacity:0}55.818%{opacity:1}99.5%{opacity:0}}@keyframes k36{0%{opacity:0}56.565%{opacity:1}99.5%{opacity:0}}@keyframes k37{0%{opacity:0}57.312%{opacity:1}99.5%{opacity:0}}@keyframes k38{0%{opacity:0}58.058%{opacity:1}99.5%{opacity:0}}@keyframes k39{0%{opacity:0}58.805%{opacity:1}99.5%{opacity:0}}@keyframes k40{0%{opacity:0}59.552%{opacity:1}99.5%{opacity:0}}@keyframes k41{0%{opacity:0}65.775%{opacity:1}99.5%{opacity:0}}</style>
+<rect width="960" height="818" rx="8" fill="#0d1117"/>
+<rect width="960" height="30" rx="8" fill="#161b22"/><rect y="22" width="960" height="8" fill="#161b22"/>
+<circle cx="18" cy="15" r="6" fill="#ff5f57"/><circle cx="38" cy="15" r="6" fill="#febc2e"/><circle cx="58" cy="15" r="6" fill="#28c840"/>
+<text x="480.0" y="20" text-anchor="middle" style="fill:#8b949e;font-size:12px">go-event-ingestor · make demo</text>
+<text class="l" style="animation-name:k0" x="16" y="60"><tspan class="p">$</tspan> make demo</text>
+<text class="l" style="animation-name:k1" x="16" y="78">Starting the stack (API, 2 workers, Postgres, Redis)…</text>
+<text class="l" style="animation-name:k2" x="16" y="96"></text>
+<text class="l" style="animation-name:k3" x="16" y="114"><tspan class="b">1. Requests without an API key are rejected</tspan></text>
+<text class="l" style="animation-name:k4" x="16" y="132">   <tspan class="d">→ 401 {&quot;error&quot;: &quot;missing or invalid API key&quot;}</tspan></text>
+<text class="l" style="animation-name:k5" x="16" y="150">   <tspan class="g">✓</tspan> 401 without Authorization header</text>
+<text class="l" style="animation-name:k6" x="16" y="168"></text>
+<text class="l" style="animation-name:k7" x="16" y="186"><tspan class="b">2. A batch of events is accepted at once and written to Postgres by the workers</tspan></text>
+<text class="l" style="animation-name:k8" x="16" y="204">   <tspan class="d">→ 202 {&quot;accepted&quot;: 3, &quot;ids&quot;: [&quot;406bf244-4bda-4aa1-a426-7eb779027881&quot;, &quot;26f31089-5179-456b-a54d-4b952dd4fa10&quot;, &quot;8b1…</tspan></text>
+<text class="l" style="animation-name:k9" x="16" y="222">   <tspan class="g">✓</tspan> 202 Accepted: the API only buffered them in Redis</text>
+<text class="l" style="animation-name:k10" x="16" y="240">   <tspan class="g">✓</tspan> all 3 events are now readable from Postgres via GET /v1/events/{id}</text>
+<text class="l" style="animation-name:k11" x="16" y="258">   <tspan class="d">→ 200 {&quot;id&quot;: &quot;8b1883c3-1535-4595-988f-c2b9906ecd1c&quot;, &quot;type&quot;: &quot;purchase&quot;, &quot;user_id&quot;: &quot;u-42&quot;, &quot;occurred_at&quot;: &quot;2026-1…</tspan></text>
+<text class="l" style="animation-name:k12" x="16" y="276"></text>
+<text class="l" style="animation-name:k13" x="16" y="294"><tspan class="b">3. A client retry with the same event ids does not create duplicates</tspan></text>
+<text class="l" style="animation-name:k14" x="16" y="312">   <tspan class="g">✓</tspan> the retry is accepted</text>
+<text class="l" style="animation-name:k15" x="16" y="330">   <tspan class="d">Postgres dedupes on the event id (INSERT … ON CONFLICT DO NOTHING); the count stays 3.</tspan></text>
+<text class="l" style="animation-name:k16" x="16" y="348"></text>
+<text class="l" style="animation-name:k17" x="16" y="366"><tspan class="b">4. Invalid events are rejected with the index of the bad one; nothing is stored</tspan></text>
+<text class="l" style="animation-name:k18" x="16" y="384">   <tspan class="d">→ 422 {&quot;error&quot;: &quot;invalid event: occurred_at is in the future&quot;, &quot;index&quot;: 1}</tspan></text>
+<text class="l" style="animation-name:k19" x="16" y="402">   <tspan class="g">✓</tspan> 422 pointing at events[1] (timestamp in the future)</text>
+<text class="l" style="animation-name:k20" x="16" y="420"></text>
+<text class="l" style="animation-name:k21" x="16" y="438"><tspan class="b">5. A message that cannot be decoded goes to the dead-letter stream instead of blocking the group</tspan></text>
+<text class="l" style="animation-name:k22" x="16" y="456">   <tspan class="g">✓</tspan> events:dead grew from 0 to 1</text>
+<text class="l" style="animation-name:k23" x="16" y="474">   <tspan class="d">1792697705130-0 source_id 1792697705129-0 reason undecodable message d this is not json </tspan></text>
+<text class="l" style="animation-name:k24" x="16" y="492"></text>
+<text class="l" style="animation-name:k25" x="16" y="510"><tspan class="b">6. Workers are stopped and MAX_BACKLOG is 50: the API pushes back instead of growing Redis forever</tspan></text>
+<text class="l" style="animation-name:k26" x="16" y="528">   <tspan class="d">→ 503 {&quot;error&quot;: &quot;ingestion is behind, retry with the same ids&quot;}</tspan></text>
+<text class="l" style="animation-name:k27" x="16" y="546">   <tspan class="g">✓</tspan> 503 with Retry-After once the backlog passed the limit</text>
+<text class="l" style="animation-name:k28" x="16" y="564">   <tspan class="d">70 events were accepted before that and are waiting in the stream.</tspan></text>
+<text class="l" style="animation-name:k29" x="16" y="582"></text>
+<text class="l" style="animation-name:k30" x="16" y="600"><tspan class="b">7. Workers are back: every event accepted during the outage reaches Postgres</tspan></text>
+<text class="l" style="animation-name:k31" x="16" y="618">   <tspan class="g">✓</tspan> sampled events out of 70 are all stored</text>
+<text class="l" style="animation-name:k32" x="16" y="636">   <tspan class="g">✓</tspan> new events are accepted again (backpressure lifted)</text>
+<text class="l" style="animation-name:k33" x="16" y="654"></text>
+<text class="l" style="animation-name:k34" x="16" y="672"><tspan class="b">8. Prometheus metrics show what happened</tspan></text>
+<text class="l" style="animation-name:k35" x="16" y="690">   <tspan class="d">ingestor_events_accepted_total{mode=&quot;buffered&quot;} 71</tspan></text>
+<text class="l" style="animation-name:k36" x="16" y="708">   <tspan class="d">ingestor_backpressure_rejections_total 1</tspan></text>
+<text class="l" style="animation-name:k37" x="16" y="726">   <tspan class="g">✓</tspan> the 503 above is counted in ingestor_backpressure_rejections_total</text>
+<text class="l" style="animation-name:k38" x="16" y="744"></text>
+<text class="l" style="animation-name:k39" x="16" y="762"><tspan class="b g">Demo finished: auth, buffering, idempotency, validation, dead letters and backpressure all behaved as described.</tspan></text>
+<text class="l" style="animation-name:k40" x="16" y="780"></text>
+<text class="l" style="animation-name:k41" x="16" y="798">Explore: Grafana dashboard → make observability, then http://localhost:3300 · stop everything → make down</text>
+</svg>
