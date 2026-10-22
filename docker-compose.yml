@@ -1,0 +1,77 @@
+name: ingestor
+
+x-app: &app
+  build: .
+  restart: unless-stopped
+  environment: &app-env
+    POSTGRES_URL: postgres://ingestor:ingestor@postgres:5432/ingestor?sslmode=disable
+    REDIS_ADDR: redis:6379
+    WRITE_MODE: ${WRITE_MODE:-buffered}
+    BATCH_SIZE: ${BATCH_SIZE:-1000}
+    FLUSH_INTERVAL: ${FLUSH_INTERVAL:-500ms}
+    CLAIM_MIN_IDLE: ${CLAIM_MIN_IDLE:-30s}
+    API_KEYS: ${API_KEYS:-dev-key}
+    SHUTDOWN_DELAY: 1s
+    MAX_BACKLOG: ${MAX_BACKLOG:-2000000}
+  depends_on:
+    postgres: { condition: service_healthy }
+    redis: { condition: service_healthy }
+
+services:
+  api:
+    <<: *app
+    command: ["api"]
+    ports: ["8080:8080"]
+    deploy:
+      resources: { limits: { cpus: "2", memory: 512M } }
+
+  worker:
+    <<: *app
+    command: ["worker"]
+    environment:
+      <<: *app-env
+      HTTP_ADDR: ":9091"
+    deploy:
+      replicas: 2
+      resources: { limits: { cpus: "1", memory: 256M } }
+
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: ingestor
+      POSTGRES_PASSWORD: ingestor
+      POSTGRES_DB: ingestor
+    command: ["postgres", "-c", "max_connections=200", "-c", "shared_buffers=256MB"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ingestor"]
+      interval: 2s
+      retries: 30
+    deploy:
+      resources: { limits: { cpus: "2", memory: 1G } }
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes", "--appendfsync", "everysec"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      retries: 30
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    profiles: ["observability"]
+    volumes:
+      - ./deploy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./deploy/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+    ports: ["9090:9090"]
+
+  grafana:
+    image: grafana/grafana:12.1.1
+    profiles: ["observability"]
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+    volumes:
+      - ./deploy/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./deploy/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports: ["3300:3000"]

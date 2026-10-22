@@ -1,0 +1,5 @@
+.git
+.github
+bench/results
+deploy
+*.md

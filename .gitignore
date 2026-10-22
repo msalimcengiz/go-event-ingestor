@@ -1,0 +1,8 @@
+/ingestor
+coverage.out
+rendered.yaml
+bench/results/*.json
+!bench/results/summary.md
+bench/results/*.txt
+.demo-state/
+__pycache__/

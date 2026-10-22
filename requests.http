@@ -1,0 +1,44 @@
+# Example requests for the VS Code "REST Client" extension or JetBrains HTTP Client.
+# Start the stack first: make up
+@base = http://localhost:8080
+@key = dev-key
+
+### Send a batch of events (202, returns the ids)
+POST {{base}}/v1/events
+Authorization: Bearer {{key}}
+Content-Type: application/json
+
+[
+  {"id": "6f1d2c1a-0000-4000-8000-000000000001", "type": "page_view", "user_id": "u-42", "payload": {"path": "/kampanyalar"}},
+  {"id": "6f1d2c1a-0000-4000-8000-000000000002", "type": "purchase", "user_id": "u-42", "payload": {"order": "o-1001", "total": 1499.9}}
+]
+
+### Read one back once a worker stored it (404 while it is still buffered)
+GET {{base}}/v1/events/6f1d2c1a-0000-4000-8000-000000000002
+Authorization: Bearer {{key}}
+
+### Same ids again: accepted, but no duplicate rows
+POST {{base}}/v1/events
+Authorization: Bearer {{key}}
+Content-Type: application/json
+
+[{"id": "6f1d2c1a-0000-4000-8000-000000000001", "type": "page_view", "user_id": "u-42"}]
+
+### Validation error: 422 with the index of the bad event
+POST {{base}}/v1/events
+Authorization: Bearer {{key}}
+Content-Type: application/json
+
+[{"type": "click", "user_id": "u1"}, {"type": "", "user_id": "u1"}]
+
+### Without an API key: 401
+POST {{base}}/v1/events
+Content-Type: application/json
+
+{"type": "click", "user_id": "u1"}
+
+### Readiness (checks Postgres and Redis) and metrics
+GET {{base}}/readyz
+
+###
+GET {{base}}/metrics

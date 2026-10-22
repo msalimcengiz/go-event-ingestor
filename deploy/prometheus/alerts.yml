@@ -1,0 +1,29 @@
+groups:
+  - name: ingestor
+    rules:
+      - alert: IngestorDeadLetters
+        expr: increase(ingestor_dead_lettered_total[10m]) > 0
+        labels: { severity: warning }
+        annotations:
+          summary: Events were dead-lettered
+          description: Inspect the events:dead stream; after fixing the cause run `ingestor dlq-replay`.
+      - alert: IngestorBacklogGrowing
+        expr: max(ingestor_stream_lag + ingestor_stream_pending) > 500000 and deriv(max(ingestor_stream_lag)[10m:]) > 0
+        for: 10m
+        labels: { severity: warning }
+        annotations:
+          summary: Workers are falling behind
+          description: Backlog above 500k and still growing; scale the worker deployment or check Postgres.
+      - alert: IngestorBackpressureActive
+        expr: rate(ingestor_backpressure_rejections_total[5m]) > 0
+        for: 5m
+        labels: { severity: critical }
+        annotations:
+          summary: API is rejecting events with 503
+          description: Backlog is over MAX_BACKLOG; clients are retrying. Scale workers.
+      - alert: IngestorFlushFailing
+        expr: rate(ingestor_flush_errors_total[5m]) > 0 and rate(ingestor_events_persisted_total[5m]) == 0
+        for: 5m
+        labels: { severity: critical }
+        annotations:
+          summary: No events are reaching Postgres

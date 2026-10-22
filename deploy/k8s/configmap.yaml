@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ingestor
+data:
+  REDIS_ADDR: redis:6379
+  WRITE_MODE: buffered
+  BATCH_SIZE: "1000"
+  FLUSH_INTERVAL: 500ms
+  CLAIM_MIN_IDLE: 30s
+  MAX_BACKLOG: "2000000"
+  MAX_DELIVERIES: "10"
+  SHUTDOWN_DELAY: 5s
+# POSTGRES_URL and API_KEYS come from the "ingestor-db" Secret:
+#   kubectl -n ingestor create secret generic ingestor-db \
+#     --from-literal=POSTGRES_URL=postgres://... --from-literal=API_KEYS=key1,key2
